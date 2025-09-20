@@ -83,9 +83,6 @@ func (c *Converter) ToMarkdown(inputPath, outputPath string) error {
 			continue
 		}
 
-		// Add page header
-		outFile.WriteString(fmt.Sprintf("## Page %d\n\n", pageNum))
-
 		// Write the structured content
 		outFile.WriteString(markdown)
 		outFile.WriteString("\n\n")
@@ -322,8 +319,6 @@ func decodePDFText(text string) string {
 			result.WriteRune(decoded)
 		} else if decoded == 0x0A || decoded == 0x0D {
 			result.WriteRune('\n')
-		} else {
-			result.WriteRune(r)
 		}
 	}
 
